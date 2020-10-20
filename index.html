@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Login Antrian Admin</title>
+    <title>Antrian JTI</title>
 
     <link
       rel="icon"
@@ -19,48 +19,32 @@
     <!--Style bootstrap-->
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
     <!-- Custom styles for this template -->
-    <link href="libs/signin.css" rel="stylesheet" />
+    <link href="libs/style.css" rel="stylesheet" />
   </head>
   <body>
-    <form class="form-signin">
-      <img
-        class="mb-4 bg-secondary"
-        src="libs/navbar-brand.svg"
-        alt=""
-        width="100%"
-      />
-      <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">
-        Sistem Antrian JTI
-      </h1>
-      <label for="inputEmail" class="sr-only">Username</label>
-      <input
-        id="user_antrian"
-        class="form-control"
-        placeholder="Username"
-        required
-        autofocus
-      />
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="pass_antrian"
-        class="form-control"
-        placeholder="Password"
-        required
-      />
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Ingat saya
-        </label>
+    <div class="wrapper">
+      <div class="main-navbar">
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand h1" href="#">Sistem Antrian</a>
+          <div class="nav-text">
+            Tanggal:
+            <div id="tanggalSekarang"></div>
+          </div>
+        </nav>
       </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Login
-      </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-    </form>
+    </div>
 
     <script src="libs/jquery-3.2.1.slim.min.js"></script>
     <script src="libs/bootstrap/js/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#tanggalSekarang").innerHTML = getTodayYear();
+      });
+      function getTodayYear() {
+        var dt = new Date(now());
+        return dt.getFullYear();
+      }
+    </script>
   </body>
 </html>
