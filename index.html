@@ -28,7 +28,13 @@
           <a class="navbar-brand h1" href="#">Sistem Antrian</a>
           <div class="nav-text">
             Tanggal:
-            <div id="tanggalSekarang"></div>
+            <script>
+              var dt = new Date();
+              day = dt.getDay();
+              month = dt.getMonth();
+              year = dt.getFullYear();
+              document.write("" + day + "/" + month + "/" + year);
+            </script>
           </div>
         </nav>
       </div>
@@ -37,14 +43,6 @@
     <script src="libs/jquery-3.2.1.slim.min.js"></script>
     <script src="libs/bootstrap/js/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#tanggalSekarang").innerHTML = getTodayYear();
-      });
-      function getTodayYear() {
-        var dt = new Date(now());
-        return dt.getFullYear();
-      }
-    </script>
+    <script src="libs/moment.min.js"></script>
   </body>
 </html>
