@@ -34,6 +34,11 @@
   float: left;
 }
 
+.middle > .main-content > .half {
+  float: left;
+  width: 50%;
+}
+
 .box-text {
   width: 150px;
   height: 120px;
@@ -41,4 +46,5 @@
   margin: 5px;
   align-content: center;
   text-align: center;
+  float: left;
 }
