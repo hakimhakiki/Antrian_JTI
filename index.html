@@ -11,11 +11,6 @@
       href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico"
     />
 
-    <link
-      rel="canonical"
-      href="https://getbootstrap.com/docs/4.0/examples/sign-in/"
-    />
-
     <!--Style bootstrap-->
     <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css" />
     <!-- Custom styles for this template -->
@@ -58,22 +53,45 @@
           </div>
         </div>
         <div class="main-content bg-white">
-          <div class="mid1">
-            <div class="box-text bg-light">
-              <h4>Sebelumnya</h4>
-              <h5>---</h5>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="box-text bg-light" id="sebelumnya">
+                      <h4>Sebelumnya</h4>
+                      <h5>---</h5>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="box-text bg-light" id="antrian">
+                      <h4>Antrian</h4>
+                      <h5>TIF-001</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6"></div>
+                  <div class="col-md-6">
+                    <button
+                      class="btn btn-primary btn-lg"
+                      style="width: 100%;"
+                      id="btn-panggil"
+                    >
+                      Panggil
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <h3>Aktif Kerja</h3>
+                <label class="switch">
+                  <input type="checkbox" id="sliderKerja" />
+                  <span class="slider"></span>
+                </label>
+              </div>
             </div>
-            <div class="box-text bg-light">
-              <h4>Antrian</h4>
-              <h5>TIF-001</h5>
-            </div>
-          </div>
-          <div class="mid2">
-            <h3>Aktif Kerja</h3>
-            <label class="switch">
-              <input type="checkbox" id="sliderKerja" />
-              <span class="slider"></span>
-            </label>
           </div>
         </div>
       </div>
