@@ -74,7 +74,11 @@
           <div class="half">
             <h3>Aktif Kerja</h3>
             <label class="switch">
-              <input type="checkbox" id="sliderKerja" />
+              <input
+                type="checkbox"
+                id="slider_kerja"
+                onchange="action_kerja()"
+              />
               <span class="slider"></span>
             </label>
           </div>
@@ -86,5 +90,14 @@
     <script src="libs/bootstrap/js/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="libs/moment.min.js"></script>
+    <script>
+      function action_kerja() {
+        if ($("#slider_kerja").prop("checked")) {
+          console.log("Slider checked");
+        } else {
+          console.log("Shutdown");
+        }
+      }
+    </script>
   </body>
 </html>
