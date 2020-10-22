@@ -1,7 +1,7 @@
 {
   "name": "simpleton-testing",
   "version": "1.0.0",
-  "description": "",
+  "description": "layout playground for sistem antrian jti",
   "main": "index.html",
   "scripts": {
     "start": "serve",
