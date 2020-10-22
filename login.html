@@ -30,7 +30,7 @@
         width="100%"
       />
       <h1 class="h3 mb-3 font-weight-normal" style="text-align: center;">
-        Sistem Antrian JTI
+        Login Admin Prodi
       </h1>
       <label for="inputEmail" class="sr-only">Username</label>
       <input
@@ -49,15 +49,22 @@
         placeholder="Password"
         required
       />
-      <div class="checkbox mb-3">
+      <!-- <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me" /> Ingat saya
         </label>
-      </div>
+      </div> -->
       <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Login
+        Masuk
       </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      <p class="mt-5 mb-3 text-muted" style="text-align: center;">
+        &copy;
+        <script>
+          var dt = new Date();
+          yy = dt.getFullYear();
+          document.write("" + yy);
+        </script>
+      </p>
     </form>
 
     <script src="libs/jquery-3.2.1.slim.min.js"></script>
