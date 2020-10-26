@@ -49,9 +49,11 @@
   float: left;
 }
 
-.main-block{
-  border-radius: 1;
-  border-width: 2px;
-  border-color: black;
+.main-block {
+  height: 550px;
   background-color: cyan;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
 }
