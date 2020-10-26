@@ -1,0 +1,9 @@
+graph TD
+  A(Mulai)  --> B{Apakah admin aktif?}
+  B --> |TIDAK| C[/Admin tidak aktif/]
+  B --> |YA| D[Mahasiswa mengisi antrian]
+  D --> E[Mahasiswa mengisi form]
+  E --> F[Mahasiswa menunggu antrian]
+  F --> G[Mahasiswa dipanggil]
+  G --> H(Selesai)
+  C --> H
