@@ -51,7 +51,7 @@
 
 .main-block {
   height: 550px;
-  background-color: cyan;
+  background-color: hsl(240, 100%, 50%);
   text-align: center;
   display: inline-block;
   vertical-align: middle;
