@@ -50,10 +50,8 @@
 }
 
 .main-block {
-  height: 550px;
-  background-color: hsl(240, 100%, 50%);
+  height: 50%;
+  background-color: #53c6d9;
   text-align: center;
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
+  padding: 120px;
 }

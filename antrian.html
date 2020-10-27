@@ -16,25 +16,33 @@
     <link href="libs/style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="container-fluid so-high">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-md-3 border main-block">
-          MIF
+          <h2>MIF</h2>
+          <h3 id="antri_mif">---</h3>
         </div>
         <div class="col-md-3 border main-block">
-          TIF
+          <h2>TIF</h2>
+          <h3 id="antri_tif">---</h3>
         </div>
         <div class="col-md-3 border main-block">
-          TKK
+          <h2>TKK</h2>
+          <h3 id="antri_tkk">---</h3>
         </div>
         <div class="col-md-3 border main-block">
-          International
+          <h2>International</h2>
+          <h3 id="antri_int">---</h3>
         </div>
       </div>
     </div>
-
     <script src="libs/jquery-3.2.1.slim.min.js"></script>
-    <script src="libs/bootstrap/js/popper.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="libs/bootstrap/js/popper.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#antri_tif").prop("innerHTML", "001");
+      });
+    </script>
   </body>
 </html>

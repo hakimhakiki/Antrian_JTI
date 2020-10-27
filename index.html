@@ -22,16 +22,7 @@
       <div class="main-navbar">
         <nav class="navbar navbar-light bg-light">
           <a class="navbar-brand h1" href="#">Sistem Antrian Admin Prodi</a>
-          <div class="nav-text">
-            Tanggal:
-            <script>
-              var dt = new Date();
-              day = dt.getDay();
-              month = dt.getMonth();
-              year = dt.getFullYear();
-              document.write("" + day + "/" + month + "/" + year);
-            </script>
-          </div>
+          <div class="nav-text">Tanggal: <span id="my_tgl"></span></div>
         </nav>
       </div>
       <div class="middle">
@@ -64,7 +55,7 @@
             </div>
             <button
               class="btn btn-primary btn-lg"
-              style="width: 150px; float: left top;"
+              style="width: 150px;"
               id="btn-panggil"
             >
               Panggil
@@ -91,10 +82,23 @@
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="libs/moment.min.js"></script>
     <script>
+      $(document).ready(function () {
+        // Membuat program untuk tanggal
+        var dt = new Date();
+        day = dt.getDay();
+        month = dt.getMonth();
+        year = dt.getFullYear();
+        _format = "" + day + "/" + month + "/" + year;
+        $("#my_tgl").prop("innerHTML", _format);
+      });
+
+      // Untuk checking checkbox slider
       function action_kerja() {
         if ($("#slider_kerja").prop("checked")) {
+          // Kirim info slider aktif
           console.log("Slider checked");
         } else {
+          // Kirim info slider non-aktif
           console.log("Shutdown");
         }
       }
