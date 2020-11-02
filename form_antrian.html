@@ -23,7 +23,7 @@
         <div class="navbar navbar-light bg-light">
           <span class="nav-brand h1">Sistem Antrian Mahasiswa</span>
         </div>
-        <form class="middle" action="" method="POST">
+        <form class="middle" id="form-antrian" action="" method="POST">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -77,6 +77,19 @@
             $("#prodi").prop("disabled", false);
           }
         });
+
+        // Script dibawah ini hanya untuk melakukan test submit
+        // START
+        $("#form-antrian").submit(function(){
+          nama = $("#nama").val();
+          nim = $("#nim").val();
+          keperluan = $("#keperluan").val();
+          prodi = $("#prodi").val();
+
+          alert("" + nama + " perlu " + keperluan + " ke prodi " + prodi + "");
+        });
+        // END
+        
       });
     </script>
   </body>
