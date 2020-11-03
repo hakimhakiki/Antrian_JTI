@@ -86,9 +86,10 @@
         // Membuat program untuk tanggal
         var dt = new Date();
         day = dt.getDay();
-        month = dt.getMonth();
+        date = dt.getDate();
+        month = dt.getMonth() + 1;
         year = dt.getFullYear();
-        _format = "" + day + "/" + month + "/" + year;
+        _format = "" + day2hari(day) + ", " + date + "-" + month + "-" + year;
         $("#my_tgl").prop("innerHTML", _format);
       });
 
@@ -100,6 +101,32 @@
         } else {
           // Kirim info slider non-aktif
           console.log("Shutdown");
+        }
+      }
+
+      function day2hari(day) {
+        switch (day) {
+          case 0:
+            return "Minggu";
+            break;
+          case 1:
+            return "Senin";
+            break;
+          case 2:
+            return "Selasa";
+            break;
+          case 3:
+            return "Rabu";
+            break;
+          case 4:
+            return "Kamis";
+            break;
+          case 5:
+            return "Jum`at";
+            break;
+          case 6:
+            return "Sabtu";
+            break;
         }
       }
     </script>
