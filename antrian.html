@@ -36,17 +36,42 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-3 border main2-block">
+          <h3>Tersisa</h3>
+          <p id="sisa_mif"></p>
+        </div>
+        <div class="col-md-3 border main2-block">
+          <h3>Tersisa</h3>
+          <p id="sisa_tif"></p>
+        </div>
+        <div class="col-md-3 border main2-block">
+          <h3>Tersisa</h3>
+          <p id="sisa_tkk"></p>
+        </div>
+        <div class="col-md-3 border main2-block">
+          <h3>Tersisa</h3>
+          <p id="sisa_int"></p>
+        </div>
+      </div>
+      <!-- <div class="row">
       	<div class="col-md-12 border border-primary button-block">
       		<a href="form_antrian.html" class="btn btn-primary btn-bg">Tambah Antrian</a>
       	</div>
-      </div>
+      </div> -->
     </div>
     <script src="libs/jquery-3.2.1.slim.min.js"></script>
     <script src="libs/bootstrap/js/bootstrap.min.js"></script>
     <script src="libs/bootstrap/js/popper.min.js"></script>
     <script>
       $(document).ready(function () {
-        $("#antri_tif").prop("innerHTML", "001");
+        $("#antri_mif").prop("innerHTML", "000");
+        $("#antri_tif").prop("innerHTML", "000");
+        $("#antri_tkk").prop("innerHTML", "000");
+        $("#antri_int").prop("innerHTML", "000");
+        $("#sisa_mif").prop("innerHTML", "0");
+        $("#sisa_tif").prop("innerHTML", "0");
+        $("#sisa_tkk").prop("innerHTML", "0");
+        $("#sisa_int").prop("innerHTML", "0");
       });
     </script>
   </body>
