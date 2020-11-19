@@ -73,3 +73,8 @@
   width: 100%;
   float: top;
 }
+
+.fixtable {
+  height: 200px;
+  overflow: auto;
+}
