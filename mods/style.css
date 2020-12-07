@@ -1,0 +1,80 @@
+* {
+  margin-top: 0;
+  padding: 0;
+}
+
+.wrapper {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.middle {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.middle > .sidebar {
+  width: 25%;
+  padding: 5px;
+  float: left;
+}
+
+.middle > .sidebar > .top-sidebar {
+  margin-top: 0;
+}
+
+.middle > .sidebar > .bottom-sidebar {
+  margin-top: 10px;
+}
+
+.middle > .main-content {
+  width: 75%;
+  padding-left: 20px;
+  float: left;
+}
+
+.middle > .main-content > .half {
+  float: left;
+  width: 50%;
+}
+
+.box-text {
+  width: 150px;
+  height: 120px;
+  padding: 5px;
+  margin: 5px;
+  align-content: center;
+  text-align: center;
+  float: left;
+}
+
+.main-block {
+  height: 50%;
+  background-color: #53c6d9;
+  text-align: center;
+  padding: 120px;
+}
+
+.main2-block {
+  text-align: center;
+  align-items: center;
+}
+
+.button-block {
+  height: 25%;
+  text-align: center;
+  padding: 80px;
+}
+
+.bottom {
+  margin-top: 100px;
+  padding-top: 100px;
+  width: 100%;
+  float: top;
+}
+
+.fixtable {
+  height: 200px;
+  overflow: auto;
+}
