@@ -5,7 +5,7 @@ defined ("BASEPATH") or exit("No direct access allowed");
 class Login extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->model("ModelLoginAdmin");
+		$this->load->model("ModelAdmin");
 	}
 
 	public function index(){
@@ -35,12 +35,12 @@ class Login extends CI_Controller{
 	        $password = $this->input->post("pass_antrian");
 
             // Ambil data dari database
-            $row = $this->ModelLoginAdmin->getDataAdmin($username);
+            $row = $this->ModelAdmin->getDataAdmin($username);
             foreach ($row as $r) {
                 $getId = $r->id_admin;
                 $getUsername = $r->username;
                 $getPassword = $r->password;
-                $row = $this->ModelLoginAdmin->lookProdi($getId);
+                $row = $this->ModelAdmin->lookProdi($getId);
                 foreach ($row as $r) {
                     $getProdi = $r->prodi;
                 }
@@ -76,6 +76,7 @@ class Login extends CI_Controller{
 	}
 
     public function logout(){
+        $this->session->sess_destroy();
         redirect('admin/login');
     }
 }

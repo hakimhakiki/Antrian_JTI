@@ -24,7 +24,7 @@
           </div>
           <div class="list-group bottom-sidebar">
             <a
-              href="#"
+              href="<?php echo base_url('admin/login/logout')?>"
               class="list-group-item list-group-item-action text-danger border-danger"
               >Keluar/Logout</a
             >
@@ -46,11 +46,13 @@
           </div>
 
           <div class="half">
-            <h3>Aktif Kerja</h3>
+            <h3>Status Kerja</h3>
             <label class="switch">
               <input type="checkbox" id="slider_kerja" onchange="action_kerja()"/>
               <span class="slider"></span>
             </label>
+            <div class="text-success" id="aktif-kerja">Aktif</div>
+            <div class="text-danger" id="tidak-kerja">Tidak Aktif</div>
           </div>
         </div>
       </div>
@@ -122,16 +124,65 @@
         year = dt.getFullYear();
         _format = "" + day2hari(day) + ", " + date + "-" + month + "-" + year;
         $("#my_tgl").prop("innerHTML", _format);
+
+        getAktif();
       });
+
+      function getAktif(){
+        $.ajax({
+          type: "GET",
+          url: "<?php echo base_url('admin/home/getAktifKerja');?>",
+          success: function(data) {
+            console.log("onget: " + data);
+            if (data == "aktif"){
+              $("#slider_kerja").prop("checked", true);
+              console.log("aktif selected");
+              labelKerja(true);
+            }else if(data == "tidak aktif"){
+              $("#slider_kerja").prop("checked", false);
+              console.log("tidak aktif selected");
+              labelKerja(false);
+            }
+          }
+        });
+      }
+
+      function labelKerja(status){
+        if(status){
+          $("#aktif-kerja").show();
+          $("#tidak-kerja").hide();
+        }else{
+          $("#aktif-kerja").hide();
+          $("#tidak-kerja").show();
+        }
+      }
 
       // Untuk checking checkbox slider
       function action_kerja() {
         if ($("#slider_kerja").prop("checked")) {
           // Kirim info slider aktif
           console.log("Slider checked");
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('admin/home/setAktifKerja');?>",
+            data: {state: "aktif"},
+            success: function(data){
+              console.log("oke");
+            }
+          });
+          labelKerja(true);
         } else {
           // Kirim info slider non-aktif
           console.log("Shutdown");
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('admin/home/setAktifKerja');?>",
+            data: {state: "tidak aktif"},
+            success: function(data){
+              console.log("oke");
+            }
+          });
+          labelKerja(false);
         }
       }
 
