@@ -10,7 +10,12 @@ class Antrian extends CI_Controller{
 		$data['title'] = "Nomor antrian";
 		$this->load->view('antrian', $data);
 	}
-	
+
+	// Fungsi di bawah ini untuk memanggil nomor panggilan
+	public function getMif(){}
+	public function getTif(){}
+	public function getTkk(){}
+	public function getInt(){}
 }
 
 ?>
