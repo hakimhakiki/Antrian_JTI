@@ -44,44 +44,58 @@ class Formantrian extends CI_Controller{
 			$tanggal = date('Y-m-d');
 			$id_prodi = $this->ModelAntrian->lookIdProdi($prodi);
 
-			/* Komposisi id antrian
-			tanggal -> id_prodi -> no_antrian
-			ex: 2020121402001
-			Id antrian baru = no_antrian + 1
-			*/
-			$tmp = $this->ModelAntrian->getLastAntrian($tanggal, $id_prodi);
-			$no_antrian = sprintf("%03d", intval($tmp) + 1);
-			$id_antrian = "". date('Ymd'). $id_prodi. $no_antrian. "";
+			// Cek point apakah admin sudah aktif kerja sesuai dengan prodi
+			// Jika belum aktif maka muncul peringatan
+			if($this->ModelAntrian->isAdminAktif($id_prodi)){
+				/* Komposisi id antrian
+				tanggal -> id_prodi -> no_antrian
+				ex: 2020121402001
+				Id antrian baru = no_antrian + 1
+				*/
+				$tmp = $this->ModelAntrian->getLastAntrian($tanggal, $id_prodi);
+				$no_antrian = sprintf("%03d", intval($tmp) + 1);
+				$id_antrian = "". date('Ymd'). $id_prodi. $no_antrian. "";
 
-			// Block program keperluan
-			$my_keperluan = "";
-			if($keperluan == "konsul"){
-				$my_keperluan = "konsultasi";
-			}elseif($keperluan == "admin"){
-				$my_keperluan = "administrasi";
+				// Block program keperluan
+				$my_keperluan = "";
+				if($keperluan == "konsul"){
+					$my_keperluan = "konsultasi";
+				}elseif($keperluan == "admin"){
+					$my_keperluan = "administrasi";
+				}
+
+				// Block program masukkan data
+				$data = array(
+					'id' => $id_antrian,
+					'nama' => $nama,
+					'tanggal' => $tanggal,
+					'keperluan' => $my_keperluan,
+					'prodi' => $id_prodi,
+					'terpanggil' => 0
+				);
+				$this->ModelAntrian->addAntrian($data);
+
+				// Block cetak bukti
+				if($prodi == "int") $prodi = "international";
+				$data = array(
+					'nama' => $nama,
+					'tanggal' => $tanggal,
+					'prodi' => strtoupper($prodi),
+					'no_antrian' => $no_antrian
+				);
+				$this->load->view("bukti_antrian", $data);
+
+			}else{
+				if($prodi=="int") {
+					$prodi = "International";
+				}else {
+					$prodi = strtoupper($prodi);
+				}
+				$data['title'] = "Form Antrian JTI";
+				$data['prodi'] = $prodi;
+				$data['admin_nonaktif'] = "nonaktif";
+				$this->load->view("form_antrian", $data);
 			}
-
-			// Block program masukkan data
-			$data = array(
-				'id' => $id_antrian,
-				'nama' => $nama,
-				'tanggal' => $tanggal,
-				'keperluan' => $my_keperluan,
-				'prodi' => $id_prodi,
-				'terpanggil' => 0
-			);
-			$this->ModelAntrian->addAntrian($data);
-
-			// Block cetak bukti
-			if($prodi == "int") $prodi = "international";
-			$data = array(
-				'nama' => $nama,
-				'tanggal' => $tanggal,
-				'prodi' => strtoupper($prodi),
-				'no_antrian' => $no_antrian
-			);
-			$this->load->view("bukti_antrian", $data);
-
 		}
 	}
 }

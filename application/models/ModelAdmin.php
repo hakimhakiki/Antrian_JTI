@@ -29,5 +29,11 @@ class ModelAdmin extends CI_Model{
 		}
 	}
 
+	public function getDataAntrian($prodi){
+		$sql = "SELECT * FROM antrian WHERE prodi = '$prodi' AND terpanggil = 0";
+		$rs = $this->db->query($sql)->result();
+		return $rs;
+	}
+
 }
 ?>

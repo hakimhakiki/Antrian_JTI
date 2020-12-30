@@ -25,6 +25,12 @@
         </div>
       </div>
       <form class="middle" id="form-antrian" action="<?php echo base_url('Formantrian/confirm'); ?>" method="POST">
+        <?php
+        if(isset($admin_nonaktif)){
+          echo "<div class='alert alert-warning'> Mohon maaf, admin ";
+          echo $prodi;
+          echo " belum aktif kerja. Terima kasih</div>";
+          } ?>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -92,7 +98,7 @@
         //   alert("" + nama + " perlu " + keperluan + " ke prodi " + prodi + "");
         // });
         // END
-        
+
       });
     </script>
   </body>

@@ -4,6 +4,7 @@ defined("BASEPATH") or exit("No direct access allowed");
 class Home extends CI_Controller
 {
 	private $prodi = "";
+	private $id_admin = "";
 
 	function __construct(){
 		parent::__construct();
@@ -11,6 +12,7 @@ class Home extends CI_Controller
 		$this->load->model("ModelAdmin");
 
 		$status = $this->session->userdata("status");
+		$this->id_admin = $this->session->userdata("id_admin");
     	$this->prodi = $this->session->userdata("user_prodi");
     	if (!isset($status) || $status != "login" || $this->prodi == ""){
     		redirect('admin/login');
@@ -19,6 +21,7 @@ class Home extends CI_Controller
 	public function index(){
 		$data['title'] = 'Antrian JTI';
 		$data['prodi'] = $this->prodi;
+		$data['tabel_antrian'] = $this->ModelAdmin->getDataAntrian($this->id_admin);
 		$this->load->view('admin/home', $data);
 	}
 

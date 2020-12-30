@@ -40,6 +40,14 @@ class ModelAntrian extends CI_Model{
 		return $rs->result();
 	}
 
+	public function isAdminAktif($idprodi){
+		$sql = "SELECT aktif_kerja FROM admin WHERE id_prodi='$idprodi'";
+		$rs = $this->db->query($sql)->result();
+		foreach ($rs as $r) {
+			return $r->aktif_kerja;
+		}
+	}
+
 	public function lookIdProdi($prodi){
 		$sql = "SELECT id_prodi FROM prodi WHERE prodi='$prodi'";
 		$rs = $this->db->query($sql)->result();

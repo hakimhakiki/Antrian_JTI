@@ -67,46 +67,12 @@
               </tr>
             </thead>
             <tbody>
+              <?php foreach($tabel_antrian as $ta) {?>
               <tr>
-                <td>1.</td>
-                <td>Maria Anders</td>
+                <td><?php echo substr($ta->id, 10); ?></td>
+                <td><?php echo $ta->nama; ?></td>
               </tr>
-              <tr>
-                <td>2.</td>
-                <td>Francisco Chang</td>
-              </tr>
-              <tr>
-                <td>3.</td>
-                <td>Roland Mendel</td>
-              </tr>
-              <tr>
-                <td>4.</td>
-                <td>Helen Bennett</td>
-              </tr>
-              <tr>
-                <td>5.</td>
-                <td>Yoshi Tannamuri</td>
-              </tr>
-              <tr>
-                <td>6.</td>
-                <td>Giovanni Rovelli</td>
-              </tr>
-              <tr>
-                <td>7.</td>
-                <td>Giovanni Rovelli</td>
-              </tr>
-              <tr>
-                <td>8.</td>
-                <td>Giovanni Rovelli</td>
-              </tr>
-              <tr>
-                <td>9.</td>
-                <td>Giovanni Rovelli</td>
-              </tr>
-              <tr>
-                <td>10.</td>
-                <td>Giovanni Rovelli</td>
-              </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>
@@ -145,6 +111,11 @@
             }
           }
         });
+      }
+
+      // Ambil antrian selanjutnya
+      function getNext(){
+        setinterval();
       }
 
       function labelKerja(status){

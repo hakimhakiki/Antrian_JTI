@@ -18,3 +18,10 @@ insert into `Admin` (id_a, username, password) values
 	('a2', 'admintif', 'admintif'),
 	('a3', 'admintkk', 'admintkk');
 
+## sql untuk mendapatkan antrian yang akan dipanggil
+select * from antrian where tanggal=datenow() and terpanggil=0;
+
+## sql sisa antrian
+select count(id_antrian) as sisa from antrian where tanggal="datenow()" and terpanggil=0 and prodi="id";
+
+

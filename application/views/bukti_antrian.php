@@ -32,7 +32,22 @@
 		</div>
 	</div>
 	<?php $this->load->view("_partials/footer"); ?>
+    <script type="text/javascript" src="<?php echo base_url(); ?>mods/jspdf/jspdf.min.js"></script>
 	<!-- <script type="text/javascript" src="<?php echo base_url();?>mods/tanggal.js"></script> -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			cetak();
+		});
+		function cetak(){
+			window.jsPdf = require('jspdf');
+			var pdf = new jsPdf();
+			doc.html(document.body, {
+				callback: function(doc){
+					doc.save()
+				}
+			});
+		}
+	</script>
 
 </body>
 </html>
