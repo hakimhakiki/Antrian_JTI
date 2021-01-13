@@ -42,6 +42,8 @@ class Home extends CI_Controller
 		$id = $this->session->userdata("id_admin");
 		$this->ModelAdmin->setAktif($id, $status);
 	}
+
+	public function panggil(){}
 }
 
 ?>

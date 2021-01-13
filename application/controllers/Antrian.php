@@ -11,11 +11,32 @@ class Antrian extends CI_Controller{
 		$this->load->view('antrian', $data);
 	}
 
+	public function fileTemp($prodi){
+		$fileAdr = base_url("mods/temp/". $prodi. ".txt");
+		$openFile = opendir($fileAdr);
+		return $openFile;
+	}
+
 	// Fungsi di bawah ini untuk memanggil nomor panggilan
-	public function getMif(){}
-	public function getTif(){}
-	public function getTkk(){}
-	public function getInt(){}
+	public function getMif(){
+		$data = $this->fileTemp("mif");
+		echo $data;
+	}
+	public function getTif(){
+		// Tunggu event "panggil" dari admin
+		$data = $this->fileTemp("tif");
+		echo $data;
+	}
+	public function getTkk(){
+		// Tunggu event "panggil" dari admin
+		$data = $this->fileTemp("tkk");
+		echo $data;
+	}
+	public function getInt(){
+		// Tunggu event "panggil" dari admin
+		$data = $this->fileTemp("inter");
+		echo $data;
+	}
 }
 
 ?>
