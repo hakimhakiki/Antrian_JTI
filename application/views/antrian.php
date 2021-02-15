@@ -50,14 +50,185 @@
     <?php $this->load->view('_partials/footer'); ?>
     <script>
       $(document).ready(function () {
-        $("#antri_mif").prop("innerHTML", "000");
-        $("#antri_tif").prop("innerHTML", "000");
-        $("#antri_tkk").prop("innerHTML", "000");
-        $("#antri_int").prop("innerHTML", "000");
-        $("#sisa_mif").prop("innerHTML", "0");
-        $("#sisa_tif").prop("innerHTML", "0");
-        $("#sisa_tkk").prop("innerHTML", "0");
-        $("#sisa_int").prop("innerHTML", "0");
+        setInterval(function(){
+
+          // Blok program untuk prodi mif
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getMif');?>",
+            success: function(data){
+              if(data==""){
+                $("#antri_mif").prop("innerHTML", "---");
+              }else{
+                $("#antri_mif").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/sisaMif');?>",
+            success: function(data){
+              if(data==""){
+                $("#sisa_mif").prop("innerHTML", "0");
+              }else{
+                $("#sisa_mif").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/panggilMif');?>",
+            success: function(data){
+              if(data==0){
+                // play sound
+                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
+                audio.play();
+                // kunci database
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciMif')?>"
+                });
+              }
+              // audio.pause();
+              // audio.currentTime = 0;
+            }
+          });
+
+          // Blok program untuk prodi tif
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getTif');?>",
+            success: function(data){
+              if(data==""){
+                $("#antri_tif").prop("innerHTML", "---");
+              }else{
+                $("#antri_tif").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/sisaTif');?>",
+            success: function(data){
+              if(data==""){
+                $("#sisa_tif").prop("innerHTML", "0");
+              }else{
+                $("#sisa_tif").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/panggilTif');?>",
+            success: function(data){
+              if(data==0){
+                // play sound
+                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
+                audio.play();
+                // kunci database
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciTif')?>"
+                });
+              }
+              // audio.pause();
+              // audio.currentTime = 0;
+            }
+          });
+
+          // Blok program untuk prodi tkk
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getTkk');?>",
+            success: function(data){
+              if(data==""){
+                $("#antri_tkk").prop("innerHTML", "---");
+              }else{
+                $("#antri_tkk").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/sisaTkk');?>",
+            success: function(data){
+              if(data==""){
+                $("#sisa_tkk").prop("innerHTML", "0");
+              }else{
+                $("#sisa_tkk").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/panggilTkk');?>",
+            success: function(data){
+              if(data==0){
+                // play sound
+                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
+                audio.play();
+                // kunci database
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciTkk')?>"
+                });
+              }
+              // audio.pause();
+              // audio.currentTime = 0;
+            }
+          });
+
+          // Blok program untuk prodi international
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getInt');?>",
+            success: function(data){
+              if(data==""){
+                $("#antri_int").prop("innerHTML", "---");
+              }else{
+                $("#antri_int").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/sisaInt');?>",
+            success: function(data){
+              if(data==""){
+                $("#sisa_int").prop("innerHTML", "0");
+              }else{
+                $("#sisa_int").prop("innerHTML", data);
+              }
+            }
+          });
+          $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/panggilInt');?>",
+            success: function(data){
+              if(data==0){
+                // play sound
+                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
+                audio.play();
+                // kunci database
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciInt')?>"
+                });
+              }
+              // audio.pause();
+              // audio.currentTime = 0;
+            }
+          });
+        }, 1000);
+        
+        // $("#antri_mif").prop("innerHTML", "000");
+        // $("#antri_tif").prop("innerHTML", "000");
+        // $("#antri_tkk").prop("innerHTML", "000");
+        // $("#antri_int").prop("innerHTML", "000");
+        // $("#sisa_mif").prop("innerHTML", "0");
+        // $("#sisa_tif").prop("innerHTML", "0");
+        // $("#sisa_tkk").prop("innerHTML", "0");
+        // $("#sisa_int").prop("innerHTML", "0");
       });
     </script>
   </body>

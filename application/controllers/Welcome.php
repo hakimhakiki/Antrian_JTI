@@ -35,16 +35,13 @@ class Welcome extends CI_Controller {
 		$antri = substr($base, 10, $length);
 		$int = intval($antri);
 		echo "<br>Base id : $base<br>Length : $length<br>No antri : $antri<br> Integer : $int";
+
+		$tgl = date("Y-m-d");
+		echo "<br>Tanggal sekarang: ". $tgl;
 	}
 
-	/*public function trimming(){
-		$last_id = $this->ModelTambahMenu->getLastId();
-		$len = strlen($last_id);
-		$get_left = substr($last_id, 0, 1);
-		$get_right = substr($last_id, 1, $len);
-		$new_number = intval($get_right) + 1;
-		$new_id = $get_left. sprintf("%03d", $new_number);
-		return $new_id;
-	}*/
+	public function suara(){
+		$this->load->view("tes_suara");
+	}
 }
 ?>

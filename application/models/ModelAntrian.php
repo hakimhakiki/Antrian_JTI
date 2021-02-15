@@ -34,6 +34,17 @@ class ModelAntrian extends CI_Model{
         }
 	}
 
+	public function getTersisa($prodi){
+		$tgl = date("Y-m-d");
+		$sql = "SELECT count(*) as sisa FROM antrian WHERE prodi = '$prodi' AND status = 0 AND tanggal='$tgl'";
+		$rs = $this->db->query($sql)->result();
+		$sisa = "";
+		foreach ($rs as $r) {
+			$sisa = $r->sisa;
+		}
+		return $sisa;
+	}
+
 	public function lookAdminAktif(){
 		$sql = "SELECT * FROM admin WHERE aktif_kerja = 1";
 		$rs = $this->db->query($sql);

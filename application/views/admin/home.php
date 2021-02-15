@@ -34,15 +34,22 @@
           <div class="half">
             <div class="box-text bg-light" id="antrian">
               <h4>Antrian</h4>
-              <h5><?php echo strtoupper($prodi);?>-001</h5>
+              <h5><?php echo strtoupper($prodi);?>-<?php echo $nomorurut;?></h5>
             </div>
             <div class="box-text bg-light" id="tersisa">
               <h4>Tersisa</h4>
-              <h5>10</h5>
+              <h5><?php echo $tersisa; ?></h5>
             </div>
-            <button class="btn btn-primary btn-lg" style="width: 150px;" id="btn-panggil">
-              Panggil
-            </button>
+            <form action="<?php echo base_url('admin/home/panggil');?>" method="POST">
+              <button class="btn btn-primary btn-lg" style="" id="btn-panggil" type="submit">
+                <i class="fa fa-paper-plane"></i> Panggil
+              </button>
+            </form>
+            <form action="<?php echo base_url('admin/home/selanjutnya');?>" method="POST">
+              <button class="btn btn-primary btn-lg" style="" id="btn-lanjut" type="submit">
+                Nomor Selanjutnya <i class="fa fa-arrow-right"></i>
+              </button>
+            </form>
           </div>
 
           <div class="half">
@@ -115,7 +122,7 @@
 
       // Ambil antrian selanjutnya
       function getNext(){
-        setinterval();
+        //setinterval();
       }
 
       function labelKerja(status){

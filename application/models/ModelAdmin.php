@@ -30,9 +30,19 @@ class ModelAdmin extends CI_Model{
 	}
 
 	public function getDataAntrian($prodi){
-		$sql = "SELECT * FROM antrian WHERE prodi = '$prodi' AND terpanggil = 0";
+		$tgl = date("Y-m-d");
+		$sql = "SELECT * FROM antrian WHERE prodi = '$prodi' AND status = 0 AND tanggal='$tgl'";
 		$rs = $this->db->query($sql)->result();
 		return $rs;
+	}
+	public function getDataTersisa($prodi){
+		$tgl = date("Y-m-d");
+		$sql = "SELECT count(*) as sisa FROM antrian WHERE prodi = '$prodi' AND status = 0 AND tanggal='$tgl'";
+		$rs = $this->db->query($sql)->result();
+		foreach ($rs as $r) {
+			$sisa = $r->sisa;
+		}
+		return $sisa;
 	}
 
 }

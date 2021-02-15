@@ -5,6 +5,7 @@
 
     <!--Style bootstrap-->
     <link rel="stylesheet" href="<?php echo base_url();?>mods/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>mods/font-awesome/css/font-awesome.min.css" />
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>mods/style.css" rel="stylesheet" />
     <link href="<?php echo base_url();?>mods/slider.css" rel="stylesheet" />

@@ -1,0 +1,8 @@
+1-9 angka biasa
+10 sepuluh
+11-19 angka + belas
+20 dua + puluh
+21-29 dua + puluh + angka
+
+100 seratus
+200 dua + ratus

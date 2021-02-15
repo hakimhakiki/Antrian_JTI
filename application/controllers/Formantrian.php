@@ -65,17 +65,21 @@ class Formantrian extends CI_Controller{
 				}
 
 				// Block program masukkan data
+				// status:
+				// 0 = menunggu
+				// 1 = diproses
+				// 2 = terpanggil
 				$data = array(
 					'id' => $id_antrian,
 					'nama' => $nama,
 					'tanggal' => $tanggal,
 					'keperluan' => $my_keperluan,
 					'prodi' => $id_prodi,
-					'terpanggil' => 0
+					'status' => 0
 				);
 				$this->ModelAntrian->addAntrian($data);
 
-				// Block cetak bukti
+				// Block program cetak bukti
 				if($prodi == "int") $prodi = "international";
 				$data = array(
 					'nama' => $nama,
