@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>Test Suara/Playlist</title>
+	</head>
+	<!-- Ini tidak bisa dilakukan -->
+	<body>
+		<script type="text/javascript" src="../mods/howler/howler.js"></script>
+		<script type="text/javascript">
+			// var sound = new Howl({
+			// 	src: ['Airport_Bell.mp3']
+			// });
+			// sound.once('load', function(){
+			// 	sound.play();
+			// });
+			list = [];
+			function add(prodi, nomor){
+				tmp=[];
+				tmp['prodi'] = prodi;
+				tmp['nomor'] = nomor;
+				list.push(tmp)
+			}
+			function getSize(){
+				return list.length;
+			}
+			function subb(){
+				return list.shift();
+			}
+			add(1, "001");
+			add(1, "002");
+			add(1, "003");
+
+			write("Size: "+getSize()+"<br>");
+			tmp = getSize();
+			for (i=0; i<tmp; i++){
+				data=subb();
+				console.log("Index: "+ i +" Prodi: "+data['prodi']+" nomor: "+ data['nomor']);
+			}
+
+			function write(data){
+				document.write(data);
+			}
+		</script>
+	</body>
+</html>

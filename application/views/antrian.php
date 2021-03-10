@@ -48,188 +48,223 @@
     </div>
     <footer class="fixed-bottom font-weight-bold text-center" style="font-size:18pt; padding-bottom: 20px;">Kunjungi kami di http://jti.polije.ac.id/antrianjti</footer>
     <?php $this->load->view('_partials/footer'); ?>
+    <script type="text/javascript" src="<?php echo base_url('mods/howler/howler.min.js');?>"></script>
     <script>
-      $(document).ready(function () {
-        setInterval(function(){
+      // List semua audio yang akan diputar
+      var audio_list = [];
+      // apakah masih memutar defult=false
+      var isPlay = false;
+      $(document).ready(function(){
+        loop = setInterval(function(){
 
-          // Blok program untuk prodi mif
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/getMif');?>",
-            success: function(data){
-              if(data==""){
-                $("#antri_mif").prop("innerHTML", "---");
-              }else{
-                $("#antri_mif").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/sisaMif');?>",
-            success: function(data){
-              if(data==""){
-                $("#sisa_mif").prop("innerHTML", "0");
-              }else{
-                $("#sisa_mif").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/panggilMif');?>",
-            success: function(data){
-              if(data==0){
-                // play sound
-                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
-                audio.play();
-                // kunci database
-                $.ajax({
-                  type: "GET",
-                  url: "<?php echo base_url('antrian/kunciMif')?>"
-                });
-              }
-              // audio.pause();
-              // audio.currentTime = 0;
-            }
-          });
-
-          // Blok program untuk prodi tif
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/getTif');?>",
-            success: function(data){
-              if(data==""){
-                $("#antri_tif").prop("innerHTML", "---");
-              }else{
-                $("#antri_tif").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/sisaTif');?>",
-            success: function(data){
-              if(data==""){
-                $("#sisa_tif").prop("innerHTML", "0");
-              }else{
-                $("#sisa_tif").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/panggilTif');?>",
-            success: function(data){
-              if(data==0){
-                // play sound
-                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
-                audio.play();
-                // kunci database
-                $.ajax({
-                  type: "GET",
-                  url: "<?php echo base_url('antrian/kunciTif')?>"
-                });
-              }
-              // audio.pause();
-              // audio.currentTime = 0;
-            }
-          });
-
-          // Blok program untuk prodi tkk
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/getTkk');?>",
-            success: function(data){
-              if(data==""){
-                $("#antri_tkk").prop("innerHTML", "---");
-              }else{
-                $("#antri_tkk").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/sisaTkk');?>",
-            success: function(data){
-              if(data==""){
-                $("#sisa_tkk").prop("innerHTML", "0");
-              }else{
-                $("#sisa_tkk").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/panggilTkk');?>",
-            success: function(data){
-              if(data==0){
-                // play sound
-                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
-                audio.play();
-                // kunci database
-                $.ajax({
-                  type: "GET",
-                  url: "<?php echo base_url('antrian/kunciTkk')?>"
-                });
-              }
-              // audio.pause();
-              // audio.currentTime = 0;
-            }
-          });
-
-          // Blok program untuk prodi international
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/getInt');?>",
-            success: function(data){
-              if(data==""){
-                $("#antri_int").prop("innerHTML", "---");
-              }else{
-                $("#antri_int").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/sisaInt');?>",
-            success: function(data){
-              if(data==""){
-                $("#sisa_int").prop("innerHTML", "0");
-              }else{
-                $("#sisa_int").prop("innerHTML", data);
-              }
-            }
-          });
-          $.ajax({
-            type: "GET",
-            url: "<?php echo base_url('antrian/panggilInt');?>",
-            success: function(data){
-              if(data==0){
-                // play sound
-                var audio = new Audio("<?php echo base_url('mods/sno.mp3');?>");
-                audio.play();
-                // kunci database
-                $.ajax({
-                  type: "GET",
-                  url: "<?php echo base_url('antrian/kunciInt')?>"
-                });
-              }
-              // audio.pause();
-              // audio.currentTime = 0;
-            }
-          });
+          // Blok program
+          mif();
+          tif();
+          tkk();
+          international();
+          // var isPlay = false;
+          
+          if(isPlay===false && audio_list.length!=0){
+            isPlay = true;
+            play();
+            // isPlay = false;
+          }
         }, 1000);
         
-        // $("#antri_mif").prop("innerHTML", "000");
-        // $("#antri_tif").prop("innerHTML", "000");
-        // $("#antri_tkk").prop("innerHTML", "000");
-        // $("#antri_int").prop("innerHTML", "000");
-        // $("#sisa_mif").prop("innerHTML", "0");
-        // $("#sisa_tif").prop("innerHTML", "0");
-        // $("#sisa_tkk").prop("innerHTML", "0");
-        // $("#sisa_int").prop("innerHTML", "0");
       });
+      // Blok program untuk prodi mif
+      function mif(){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getMif');?>",
+            dataType: "JSON",
+            success: function(data){
+              if(data.nomor==""){
+                $("#antri_mif").prop("innerHTML", "---");
+              }else{
+                $("#antri_mif").prop("innerHTML", data.nomor);
+              }
+              if(data.sisa==""){
+                $("#sisa_mif").prop("innerHTML", "0");
+              }else{
+                $("#sisa_mif").prop("innerHTML", data.sisa);
+              }
+              if(data.panggil==0 && data.nomor!=""){
+                // kunci status pada tabel
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciMif')?>",
+                  error: function(response){
+                    console.log(response.responseText);
+                  }
+                });
+                console.log("dipanggil: "+data.nomor);
+                // play sound/ add playlist
+                addlist(data.files);
+              }else{
+                // console.log("tidak ada: "+data.nomor);
+              }
+            }
+          });
+      }
+      // Blok program untuk prodi tif
+      function tif(){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getTif');?>",
+            dataType: "JSON",
+            success: function(data){
+              if(data.nomor==""){
+                $("#antri_tif").prop("innerHTML", "---");
+              }else{
+                $("#antri_tif").prop("innerHTML", data.nomor);
+              }
+              if(data.sisa==""){
+                $("#sisa_tif").prop("innerHTML", "0");
+              }else{
+                $("#sisa_tif").prop("innerHTML", data.sisa);
+              }
+              if(data.panggil==0 && data.nomor!=""){
+                // kunci status pada tabel
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciTif')?>",
+                  error: function(response){
+                    console.log(response.responseText);
+                  }
+                });
+                console.log("dipanggil: "+data.nomor);
+                // play sound/ add playlist
+                addlist(data.files);
+              }else{
+                // console.log("tidak ada: "+data.nomor);
+              }
+            }
+          });
+      }
+      // Blok program untuk prodi tkk
+      function tkk(){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getTkk');?>",
+            dataType: "JSON",
+            success: function(data){
+              if(data.nomor==""){
+                $("#antri_tkk").prop("innerHTML", "---");
+              }else{
+                $("#antri_tkk").prop("innerHTML", data.nomor);
+              }
+              if(data.sisa==""){
+                $("#sisa_tkk").prop("innerHTML", "0");
+              }else{
+                $("#sisa_tkk").prop("innerHTML", data.sisa);
+              }
+              if(data.panggil==0 && data.nomor!=""){
+                // kunci status pada tabel
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciTkk')?>",
+                  error: function(response){
+                    console.log(response.responseText);
+                  }
+                });
+                console.log("dipanggil: "+data.nomor);
+                // play sound/ add playlist
+                addlist(data.files);
+              }else{
+                // console.log("tidak ada: "+data.nomor);
+              }
+            }
+          });
+      }
+      // Blok program untuk prodi international
+      function international(){
+        $.ajax({
+            type: "GET",
+            url: "<?php echo base_url('antrian/getInt');?>",
+            dataType: "JSON",
+            success: function(data){
+              if(data.nomor==""){
+                $("#antri_int").prop("innerHTML", "---");
+              }else{
+                $("#antri_int").prop("innerHTML", data.nomor);
+              }
+              if(data.sisa==""){
+                $("#sisa_int").prop("innerHTML", "0");
+              }else{
+                $("#sisa_int").prop("innerHTML", data.sisa);
+              }
+              if(data.panggil==0 && data.nomor!=""){
+                // kunci status pada tabel
+                $.ajax({
+                  type: "GET",
+                  url: "<?php echo base_url('antrian/kunciInt')?>",
+                  error: function(response){
+                    console.log(response.responseText);
+                  }
+                });
+                console.log("dipanggil: "+data.nomor);
+                // play sound/ add playlist
+                addlist(data.files);
+              }else{
+                // console.log("tidak ada: "+data.nomor);
+              }
+            }
+          });
+      }
+
+      
+      /*
+      Fungsi dibawah ini untuk bagian audio yang meliputi:
+      1. rumus terbilang
+      2. number to speech
+      3. playlist
+      */
+
+      // playlist: audio_list
+      function addlist(data_array){
+        files=["<?php echo base_url('audio/antrian/')?>nomor-antrian.wav"];
+        files = files.concat(data_array);
+        audio_list.push(files);
+      }
+      function play(){
+        // if(audio_list.length!=0){
+          tmp = audio_list[0];
+          // console.log("audio: " + audio_list);
+          autoplay(0, tmp);
+          delete audio_list[0];
+          audio_list.shift();
+        // }
+      }
+
+      // autoplay (with next) function goes here
+      function autoplay(i, list){
+        if (i != 'x'){
+          var sound = new Howl({
+            src: [list[i]],
+            preload: true,
+            onplay: function(){
+              isPlay = true;
+            },
+            onend: function(){
+              if((i + 1) == list.length){
+                isPlay = false;
+                autoplay('x', list);
+              }
+              else{
+                autoplay(i + 1, list);
+              }
+            }
+          });
+          sound.play();
+          // if(sound.isPlaying){
+          //   isPlay = true;
+          //   // sound.pause()
+          // }else{
+            
+          // }
+        }
+      }
     </script>
   </body>
 </html>

@@ -2,8 +2,8 @@
 <html>
 <head>
 	<title>Antrian</title>
-	<link rel="stylesheet" type="text/css" href="../libs/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../libs/print.css">
+	<link rel="stylesheet" type="text/css" href="../mods/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../mods/print.css">
 </head>
 <body>
 	<div class="container-fluid wrapper">
@@ -28,12 +28,21 @@
 			POLITEKNIK NEGERI JEMBER</h4>
 		</div>
 	</div>
-	<script type="text/javascript" src="../libs/jquery/jquery-3.2.1.slim.min.js"></script>
-	<script type="text/javascript" src="../libs/tanggal.js"></script>
+	<script type="text/javascript" src="../mods/jquery/jquery-3.2.1.slim.min.js"></script>
+	<script type="text/javascript" src="../mods/tanggal.js"></script>
+	<script type="text/javascript" src="../mods/jspdf/jspdf.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 	        $("#tanggal").prop("innerHTML", getDateNow());
+	        printPDF();
 		});
+
+		function printPDF(){
+			var pdf = new jsPDF();
+			pdf.addHTML($('body').first(), function() {
+		        pdf.save("BuktiAntrian.pdf");
+		    });
+		}
 	</script>
 
 </body>

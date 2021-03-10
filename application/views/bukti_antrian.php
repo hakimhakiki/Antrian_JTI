@@ -39,13 +39,10 @@
 			cetak();
 		});
 		function cetak(){
-			window.jsPdf = require('jspdf');
-			var pdf = new jsPdf();
-			doc.html(document.body, {
-				callback: function(doc){
-					doc.save()
-				}
-			});
+			var pdf = new jsPDF();
+			pdf.addHTML($('body').first(), function() {
+		        pdf.save("BuktiAntrian_<?php echo date('d-m-Y'). '_'. $nama; ?>.pdf");
+		    });
 		}
 	</script>
 

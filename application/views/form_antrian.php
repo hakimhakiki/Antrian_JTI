@@ -65,7 +65,7 @@
           </div>
           <div class="col-md-6">
             <button type="submit" class="btn btn-success btn-lg">
-              Konfirmasi & cetak bukti
+              Konfirmasi & cetak bukti PDF
             </button>
           </div>
         </div>
